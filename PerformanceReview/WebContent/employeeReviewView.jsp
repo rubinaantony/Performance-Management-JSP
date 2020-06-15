@@ -1,7 +1,7 @@
 <%-- 
-    Document   : Viewing Employees
-    Created on : 16.11.2019
-    Author     : AURUM
+    Document   : Viewing Performace Review
+    Created on : 15.06.2020
+    Author     : Rubina Brijith Antony
 --%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -120,27 +120,9 @@ body {
 	<div class="navbar">
 		<img src="logo.png" width="200px" height="100px"> <strong>
 			<a class="active" href="logout.jsp">LOGOUT</a> 
-			<div class="dropdown">
-				<button class="dropbtn">
-					<strong>PERFORMANCE REVIEW</strong> <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<a href="loanRateView.jsp">ADD</a>
-					<a href="loanRateView.jsp">VIEW</a> <a href="loanRate.jsp">UPDATE</a>
-				</div>
-			</div>
+			<a class="active" href="employeeReviewView.jsp">PERFORMANCE REVIEW</a> 
 
-			<div class="dropdown">
-				<button class="dropbtn">
-					<strong>EMPLOYEE</strong> <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<a href="employeeAdd.jsp">ADD EMPLOYEE</a> <a
-						href="employeeView.jsp">VIEW/UPDATE/DELETE</a>
-
-				</div>
-			</div>
-		</strong>
+			
 	</div>
 
 	<div class="back">

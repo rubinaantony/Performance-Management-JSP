@@ -1,7 +1,7 @@
 <%-- 
-    Document   : Admin Welcome page
-    Created on : 15.11.2019
-    Author     : AURUM
+    Document   : Employee Welcome Page
+    Created on : 15.06.2020
+    Author     : Rubina Brijith Antony
 --%>
 <!DOCTYPE html>
 <html>
