@@ -8,16 +8,16 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript">
-	function validation() {
-		var password = document.employee.password.value;
-		if (password.length < 6) {
-			alert("Password must be at least 6 characters long.");
-			return false;
-		}
-
-		return true;
-
+function validation() {
+	var password = document.employee.password.value;
+	if (password.length < 6) {
+		alert("Password must be at least 6 characters long.");
+		return false;
 	}
+
+	return true;
+
+}
 </script>
 <style>
 body {
@@ -114,83 +114,83 @@ body {
 </head>
 <body>
 	<%
-		session = request.getSession(false);
-		response.setHeader("Cache-Control", "no-cache");
-		response.setHeader("Cache-Control", "no-store");
-		response.setDateHeader("Expires", 0);
-		response.setHeader("Pragma", "no-cache");
-		String userName = (String) session.getAttribute("user");
-		if (userName == null || userName == "") {
-			response.sendRedirect("login.jsp?val=You are successfully logged out");
-		}
-	%>
-		<div class="navbar">
-		<img src="logo.png" width="200px" height="100px"> <strong>
-			<a class="active" href="logout.jsp">LOGOUT</a> 
-			<div class="dropdown">
-				<button class="dropbtn">
-					<strong>PERFORMANCE REVIEW</strong> <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<a href="assignPerformanceReview.jsp">ADD</a>
-					<a href="viewReviewEmp.jsp">VIEW</a> <a href="loanRate.jsp">UPDATE</a>
-				</div>
+	session = request.getSession(false);
+	response.setHeader("Cache-Control", "no-cache");
+	response.setHeader("Cache-Control", "no-store");
+	response.setDateHeader("Expires", 0);
+	response.setHeader("Pragma", "no-cache");
+	String userName = (String) session.getAttribute("user");
+	if (userName == null || userName == "") {
+		response.sendRedirect("login.jsp?val=You are successfully logged out");
+	}
+%>
+	<div class="navbar">
+	<img src="logo.png" width="200px" height="100px"> <strong>
+		<a class="active" href="logout.jsp">LOGOUT</a> 
+		<div class="dropdown">
+			<button class="dropbtn">
+				<strong>PERFORMANCE REVIEW</strong> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="assignPerformanceReview.jsp">ADD</a>
+				<a href="viewReviewEmp.jsp">VIEW</a> <a href="loanRate.jsp">UPDATE</a>
 			</div>
+		</div>
 
-			<div class="dropdown">
-				<button class="dropbtn">
-					<strong>EMPLOYEE</strong> <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<a href="employeeAdd.jsp">ADD EMPLOYEE</a> <a
-						href="employeeView.jsp">VIEW/UPDATE/DELETE</a>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<strong>EMPLOYEE</strong> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="employeeAdd.jsp">ADD EMPLOYEE</a> <a
+					href="employeeView.jsp">VIEW/UPDATE/DELETE</a>
 
-				</div>
 			</div>
-		</strong>
-	</div>
-	<div class="back">
-		<div class="employee">
-			<form name="employee" method="post" action="employeeAddAction.jsp">
-				<table cellpadding="10">
-					<tr>
-						<td colspan="2"><h1>Employee Details</h1></td>
-					<tr>
-						<td>Employee Number</td>
-						<td><input type="number" name="num" required=""></td>
-					</tr>
-					<tr>
-						<td>Employee name</td>
-						<td><input type="text" name="name" required=""></td>
-					</tr>
-					<tr>
-						<td>User name</td>
-						<td><input type="text" name="username" required=""></td>
-					</tr>
-					<tr>
-						<td>Password</td>
-						<td><input type="password" name="password" required=""></td>
-					</tr>
-					<tr>
-						<td>Address</td>
-						<td><input type="textarea" name="address" required=""></td>
-					</tr>
-					<tr>
-						<td>Mobile</td>
-						<td><input type="number" name="mobile" required=""></td>
-					</tr>
-					<tr>
-						<td>Email</td>
-						<td><input type="email" name="email" required=""></td>
-					</tr>
-					<tr>
-						<td>Role</td>
-						<td><input type="text" name="role" required=""></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><input type="submit" value="submit"
-							onclick="return validation()"></td>
+		</div>
+	</strong>
+</div>
+<div class="back">
+	<div class="employee">
+		<form name="employee" method="post" action="employeeAddAction.jsp">
+			<table cellpadding="10">
+				<tr>
+					<td colspan="2"><h1>Employee Details</h1></td>
+				<tr>
+					<td>Employee Number</td>
+					<td><input type="number" name="num" required=""></td>
+				</tr>
+				<tr>
+					<td>Employee name</td>
+					<td><input type="text" name="name" required=""></td>
+				</tr>
+				<tr>
+					<td>User name</td>
+					<td><input type="text" name="username" required=""></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><input type="password" name="password" required=""></td>
+				</tr>
+				<tr>
+					<td>Address</td>
+					<td><input type="textarea" name="address" required=""></td>
+				</tr>
+				<tr>
+					<td>Mobile</td>
+					<td><input type="number" name="mobile" required=""></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type="email" name="email" required=""></td>
+				</tr>
+				<tr>
+					<td>Role</td>
+					<td><input type="text" name="role" required=""></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="submit"
+						onclick="return validation()"></td>
 					</tr>
 				</table>
 			</form>

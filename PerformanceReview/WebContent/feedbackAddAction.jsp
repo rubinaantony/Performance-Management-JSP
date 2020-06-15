@@ -9,22 +9,22 @@
 <%@page import="com.java.dao.AdminDao"%>
 
 <%
-	Integer eno = Integer.parseInt(request.getParameter("eno"));
-	String feedback = request.getParameter("feedback");
+Integer eno = Integer.parseInt(request.getParameter("eno"));
+String feedback = request.getParameter("feedback");
 
 
-	AdminBean adminBean = new AdminBean();
-	adminBean.setId(eno);
-	adminBean.setFeedback(feedback);
-	
+AdminBean adminBean = new AdminBean();
+adminBean.setId(eno);
+adminBean.setFeedback(feedback);
 
 
-	boolean flag = AdminDao.updatefeedback(adminBean);
-	if (flag) {
 
-		response.sendRedirect("employeeReviewView.jsp");
-	} else {
+boolean flag = AdminDao.updatefeedback(adminBean);
+if (flag) {
 
-		response.sendRedirect("employeeReviewView.jsp");
-	}
+	response.sendRedirect("employeeReviewView.jsp");
+} else {
+
+	response.sendRedirect("employeeReviewView.jsp");
+}
 %>

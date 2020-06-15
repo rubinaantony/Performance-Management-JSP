@@ -107,101 +107,101 @@ body {
 </head>
 <body>
 	<%
-		session = request.getSession(false);
-		response.setHeader("Cache-Control", "no-cache");
-		response.setHeader("Cache-Control", "no-store");
-		response.setDateHeader("Expires", 0);
-		response.setHeader("Pragma", "no-cache");
-		String userName = (String) session.getAttribute("user");
-		if (userName == null || userName == "") {
-			response.sendRedirect("login.jsp?val=You are successfully logged out");
-		}
-	%>
-	<div class="navbar">
-		<img src="logo.png" width="200px" height="100px"> <strong>
-			<a class="active" href="logout.jsp">LOGOUT</a> 
-			<div class="dropdown">
-				<button class="dropbtn">
-					<strong>PERFORMANCE REVIEW</strong> <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<a href="loanRateView.jsp">ADD</a>
-					<a href="loanRateView.jsp">VIEW</a> <a href="loanRate.jsp">UPDATE</a>
-				</div>
+	session = request.getSession(false);
+	response.setHeader("Cache-Control", "no-cache");
+	response.setHeader("Cache-Control", "no-store");
+	response.setDateHeader("Expires", 0);
+	response.setHeader("Pragma", "no-cache");
+	String userName = (String) session.getAttribute("user");
+	if (userName == null || userName == "") {
+		response.sendRedirect("login.jsp?val=You are successfully logged out");
+	}
+%>
+<div class="navbar">
+	<img src="logo.png" width="200px" height="100px"> <strong>
+		<a class="active" href="logout.jsp">LOGOUT</a> 
+		<div class="dropdown">
+			<button class="dropbtn">
+				<strong>PERFORMANCE REVIEW</strong> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="loanRateView.jsp">ADD</a>
+				<a href="loanRateView.jsp">VIEW</a> <a href="loanRate.jsp">UPDATE</a>
 			</div>
+		</div>
 
-			<div class="dropdown">
-				<button class="dropbtn">
-					<strong>EMPLOYEE</strong> <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<a href="employeeAdd.jsp">ADD EMPLOYEE</a> <a
-						href="employeeView.jsp">VIEW/UPDATE/DELETE</a>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<strong>EMPLOYEE</strong> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="employeeAdd.jsp">ADD EMPLOYEE</a> <a
+					href="employeeView.jsp">VIEW/UPDATE/DELETE</a>
 
-				</div>
 			</div>
-		</strong>
-	</div>
+		</div>
+	</strong>
+</div>
 
-	<div class="back">
-		<div class="employee">
-			<%@ page import="com.java.dao.AdminDao"%>
-			<%@ page import="com.java.beans.AdminBean"%>
-			<%@ page import="java.util.ArrayList"%>
+<div class="back">
+	<div class="employee">
+		<%@ page import="com.java.dao.AdminDao"%>
+		<%@ page import="com.java.beans.AdminBean"%>
+		<%@ page import="java.util.ArrayList"%>
+		<%
+		ArrayList<AdminBean> eb = AdminDao.viewReview();
+
+			AdminBean adminBean = new AdminBean();
+			int size = 0;
+			size = eb.size();
+			if (size == 0) {
+		%>
+		<h3 align="center">NO DATA TO SHOWN</h3>
+		<%
+			} else {
+		%>
+		<h1 align="center">REVIEW DETAILS</h1>
+		<table width="500" border="1" align="center">
+
+			<tr>
+				<td align="center">Sl.No</td>
+				<td align="center">Review Id</td>
+				<td align="center">Reviewed Employee</td>
+				<td align="center">Reviewing Employee</td>
+				<td align="center">Review</td>
+			</tr>
 			<%
-			ArrayList<AdminBean> eb = AdminDao.viewReview();
-
-				AdminBean adminBean = new AdminBean();
-				int size = 0;
-				size = eb.size();
-				if (size == 0) {
+				int i = 0;
+					for (AdminBean it : eb) {
+						i = i + 1;
 			%>
-			<h3 align="center">NO DATA TO SHOWN</h3>
+
+			<tr>
+				<td width="12" height="20" align="center"><span
+					style="font-size: 14"><%=i%></span></td>
+				<td width="43" align="center"><div align="center">
+						<span style="font-size: 14"><%=it.getId()%> </span>
+					</div></td>
+				<td width="43" align="center"><div align="center">
+						<span style="font-size: 14"><%=it.getReviewedPerson()%> </span>
+					</div></td>
+				<td width="43" align="center"><div align="center">
+						<span style="font-size: 14"><%=it.getReviewingPerson()%> </span>
+					</div></td>
+				<td width="43" align="center"><div align="center">
+						<span style="font-size: 14"><%=it.getReview()%></span>
+					</div></td>
+				<td width="43" align="center"><div align="center">
+						<span style="font-size: 14"><a
+							href="reviewUpdate.jsp?eno=<%=it.getId()%>&reviewed=<%=it.getReviewedPerson()%>&reviewing=<%=it.getReviewingPerson()%>&review=<%=it.getReview()%>">edit</a></span>
+					</div></td>
+			
+			</tr>
+
 			<%
-				} else {
+				}
+				}
 			%>
-			<h1 align="center">REVIEW DETAILS</h1>
-			<table width="500" border="1" align="center">
-
-				<tr>
-					<td align="center">Sl.No</td>
-					<td align="center">Review Id</td>
-					<td align="center">Reviewed Employee</td>
-					<td align="center">Reviewing Employee</td>
-					<td align="center">Review</td>
-				</tr>
-				<%
-					int i = 0;
-						for (AdminBean it : eb) {
-							i = i + 1;
-				%>
-
-				<tr>
-					<td width="12" height="20" align="center"><span
-						style="font-size: 14"><%=i%></span></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><%=it.getId()%> </span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><%=it.getReviewedPerson()%> </span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><%=it.getReviewingPerson()%> </span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><%=it.getReview()%></span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><a
-								href="reviewUpdate.jsp?eno=<%=it.getId()%>&reviewed=<%=it.getReviewedPerson()%>&reviewing=<%=it.getReviewingPerson()%>&review=<%=it.getReview()%>">edit</a></span>
-						</div></td>
-				
-				</tr>
-
-				<%
-					}
-					}
-				%>
 
 			</table>
 		</div>

@@ -107,122 +107,122 @@ body {
 </head>
 <body>
 	<%
-		session = request.getSession(false);
-		response.setHeader("Cache-Control", "no-cache");
-		response.setHeader("Cache-Control", "no-store");
-		response.setDateHeader("Expires", 0);
-		response.setHeader("Pragma", "no-cache");
-		String userName = (String) session.getAttribute("user");
-		if (userName == null || userName == "") {
-			response.sendRedirect("login.jsp?val=You are successfully logged out");
-		}
+session = request.getSession(false);
+response.setHeader("Cache-Control", "no-cache");
+response.setHeader("Cache-Control", "no-store");
+response.setDateHeader("Expires", 0);
+response.setHeader("Pragma", "no-cache");
+String userName = (String) session.getAttribute("user");
+if (userName == null || userName == "") {
+	response.sendRedirect("login.jsp?val=You are successfully logged out");
+}
+%>
+<div class="navbar">
+	<img src="logo.png" width="200px" height="100px"> <strong>
+		<a class="active" href="logout.jsp">LOGOUT</a> 
+		<div class="dropdown">
+			<button class="dropbtn">
+				<strong>PERFORMANCE REVIEW</strong> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="assignPerformanceReview.jsp">ADD</a>
+				<a href="viewReviewEmp.jsp">VIEW/UPDATE</a> 
+			</div>
+		</div>
+
+		<div class="dropdown">
+			<button class="dropbtn">
+				<strong>EMPLOYEE</strong> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="employeeAdd.jsp">ADD EMPLOYEE</a> <a
+					href="employeeView.jsp">VIEW/UPDATE/DELETE</a>
+
+			</div>
+		</div>
+	</strong>
+</div>
+
+<div class="back">
+	<div class="employee">
+		<%@ page import="com.java.dao.EmployeeDAO"%>
+	<%@ page import="com.java.beans.EmployeeBean"%>
+	<%@ page import="java.util.ArrayList"%>
+	<%
+		ArrayList<EmployeeBean> eb = EmployeeDAO.viewEmployee();
+
+		EmployeeBean employeeBean = new EmployeeBean();
+		int size = 0;
+		size = eb.size();
+		if (size == 0) {
 	%>
-	<div class="navbar">
-		<img src="logo.png" width="200px" height="100px"> <strong>
-			<a class="active" href="logout.jsp">LOGOUT</a> 
-			<div class="dropdown">
-				<button class="dropbtn">
-					<strong>PERFORMANCE REVIEW</strong> <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<a href="assignPerformanceReview.jsp">ADD</a>
-					<a href="viewReviewEmp.jsp">VIEW/UPDATE</a> 
-				</div>
-			</div>
+	<h3 align="center">NO DATA TO SHOWN</h3>
+	<%
+		} else {
+	%>
+	<h1 align="center">EMPLOYEE DETAILS</h1>
+	<table width="500" border="1" align="center">
 
-			<div class="dropdown">
-				<button class="dropbtn">
-					<strong>EMPLOYEE</strong> <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<a href="employeeAdd.jsp">ADD EMPLOYEE</a> <a
-						href="employeeView.jsp">VIEW/UPDATE/DELETE</a>
+		<tr>
+			<td align="center">Sl.No</td>
+			<td align="center">Employee Id</td>
+			<td align="center">Employee Name</td>
+			<td align="center">UserName</td>
+			<td align="center">Password</td>
+			<td align="center">Address</td>
+			<td align="center">Mobile</td>
+			<td align="center">Email</td>
+			<td align="center">Role</td>
+			<td align="center">Action</td>
+			<td align="center">Action</td>
+		</tr>
+		<%
+			int i = 0;
+				for (EmployeeBean it : eb) {
+					i = i + 1;
+		%>
 
-				</div>
-			</div>
-		</strong>
-	</div>
+		<tr>
+			<td width="12" height="20" align="center"><span
+				style="font-size: 14"><%=i%></span></td>
+			<td width="43" align="center"><div align="center">
+					<span style="font-size: 14"><%=it.getEno()%> </span>
+				</div></td>
+			<td width="43" align="center"><div align="center">
+					<span style="font-size: 14"><%=it.getEname()%> </span>
+				</div></td>
+			<td width="43" align="center"><div align="center">
+					<span style="font-size: 14"><%=it.getEusername()%> </span>
+				</div></td>
+			<td width="43" align="center"><div align="center">
+					<span style="font-size: 14"><%=it.getEpassword()%></span>
+				</div></td>
+			<td width="43" align="center"><div align="center">
+					<span style="font-size: 14"><%=it.getEaddress()%> </span>
+				</div></td>
+			<td width="43" align="center"><div align="center">
+					<span style="font-size: 14"><%=it.getEmobile()%> </span>
+				</div></td>
+			<td width="43" align="center"><div align="center">
+					<span style="font-size: 14"><%=it.getEemail()%> </span>
+				</div></td>
+			<td width="43" align="center"><div align="center">
+					<span style="font-size: 14"><%=it.getErole()%></span>
+				</div></td>
+			<td width="43" align="center"><div align="center">
+					<span style="font-size: 14"><a
+						href="employeeUpdate.jsp?eno=<%=it.getEno()%>&ename=<%=it.getEname()%>&eusername=<%=it.getEusername()%>&epassword=<%=it.getEpassword()%>&eaddress=<%=it.getEaddress()%>&emobile=<%=it.getEmobile()%>&eemail=<%=it.getEemail()%>&erole=<%=it.getErole()%>">edit</a></span>
+				</div></td>
+			<td width="43" align="center"><div align="center">
+					<span style="font-size: 14"><a
+						href="employeeDeleteAction.jsp?eno=<%=it.getEno()%>">delete</a></span>
+				</div></td>
+		</tr>
 
-	<div class="back">
-		<div class="employee">
-			<%@ page import="com.java.dao.EmployeeDAO"%>
-			<%@ page import="com.java.beans.EmployeeBean"%>
-			<%@ page import="java.util.ArrayList"%>
-			<%
-				ArrayList<EmployeeBean> eb = EmployeeDAO.viewEmployee();
-
-				EmployeeBean employeeBean = new EmployeeBean();
-				int size = 0;
-				size = eb.size();
-				if (size == 0) {
-			%>
-			<h3 align="center">NO DATA TO SHOWN</h3>
-			<%
-				} else {
-			%>
-			<h1 align="center">EMPLOYEE DETAILS</h1>
-			<table width="500" border="1" align="center">
-
-				<tr>
-					<td align="center">Sl.No</td>
-					<td align="center">Employee Id</td>
-					<td align="center">Employee Name</td>
-					<td align="center">UserName</td>
-					<td align="center">Password</td>
-					<td align="center">Address</td>
-					<td align="center">Mobile</td>
-					<td align="center">Email</td>
-					<td align="center">Role</td>
-					<td align="center">Action</td>
-					<td align="center">Action</td>
-				</tr>
-				<%
-					int i = 0;
-						for (EmployeeBean it : eb) {
-							i = i + 1;
-				%>
-
-				<tr>
-					<td width="12" height="20" align="center"><span
-						style="font-size: 14"><%=i%></span></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><%=it.getEno()%> </span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><%=it.getEname()%> </span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><%=it.getEusername()%> </span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><%=it.getEpassword()%></span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><%=it.getEaddress()%> </span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><%=it.getEmobile()%> </span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><%=it.getEemail()%> </span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><%=it.getErole()%></span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><a
-								href="employeeUpdate.jsp?eno=<%=it.getEno()%>&ename=<%=it.getEname()%>&eusername=<%=it.getEusername()%>&epassword=<%=it.getEpassword()%>&eaddress=<%=it.getEaddress()%>&emobile=<%=it.getEmobile()%>&eemail=<%=it.getEemail()%>&erole=<%=it.getErole()%>">edit</a></span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><a
-								href="employeeDeleteAction.jsp?eno=<%=it.getEno()%>">delete</a></span>
-						</div></td>
-				</tr>
-
-				<%
-					}
-					}
-				%>
+		<%
+			}
+			}
+		%>
 
 			</table>
 		</div>

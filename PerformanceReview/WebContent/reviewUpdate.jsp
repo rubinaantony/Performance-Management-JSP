@@ -112,92 +112,92 @@ table {
 </head>
 <body>
 	<%
-		session = request.getSession(false);
-		response.setHeader("Cache-Control", "no-cache");
-		response.setHeader("Cache-Control", "no-store");
-		response.setDateHeader("Expires", 0);
-		response.setHeader("Pragma", "no-cache");
-		String userName = (String) session.getAttribute("user");
-		if (userName == null || userName == "") {
-			response.sendRedirect("login.jsp?val=You are successfully logged out");
-		}
+session = request.getSession(false);
+response.setHeader("Cache-Control", "no-cache");
+response.setHeader("Cache-Control", "no-store");
+response.setDateHeader("Expires", 0);
+response.setHeader("Pragma", "no-cache");
+String userName = (String) session.getAttribute("user");
+if (userName == null || userName == "") {
+	response.sendRedirect("login.jsp?val=You are successfully logged out");
+}
+%>
+<div class="navbar">
+	<img src="logo.png" width="200px" height="100px"> <strong>
+		<a class="active" href="logout.jsp">LOGOUT</a> <a class="active"
+		href="customerLoanViewAdmin.jsp">LOAN</a> <a class="active"
+		href="customerAdmin.jsp">CUSTOMERS</a> <a class="active"
+		href="#contact">EMI</a>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<strong>GOLD RATE</strong> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="goldRateView.jsp">VIEW</a> <a href="goldRate.jsp">UPDATE</a>
+
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<strong>INTEREST</strong> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="interestView.jsp">VIEW</a> <a href="interest.jsp">UPDATE</a>
+
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<strong>LOAN RATE</strong> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="loanRateView.jsp">VIEW</a> <a href="loanRate.jsp">UPDATE</a>
+			</div>
+		</div>
+
+		<div class="dropdown">
+			<button class="dropbtn">
+				<strong>EMPLOYEE</strong> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="employeeAdd.jsp">ADD EMPLOYEE</a> <a
+					href="employeeView.jsp">VIEW/UPDATE/DELETE</a>
+
+			</div>
+		</div>
+	</strong>
+</div>
+
+<div class="back">
+	<div class="employee">
+		<%
+		Integer eno = Integer.parseInt(request.getParameter("eno"));
+		String reviewed = request.getParameter("reviewed");
+		String reviewing = request.getParameter("reviewing");
+		String review = request.getParameter("review");
 	%>
-	<div class="navbar">
-		<img src="logo.png" width="200px" height="100px"> <strong>
-			<a class="active" href="logout.jsp">LOGOUT</a> <a class="active"
-			href="customerLoanViewAdmin.jsp">LOAN</a> <a class="active"
-			href="customerAdmin.jsp">CUSTOMERS</a> <a class="active"
-			href="#contact">EMI</a>
-			<div class="dropdown">
-				<button class="dropbtn">
-					<strong>GOLD RATE</strong> <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<a href="goldRateView.jsp">VIEW</a> <a href="goldRate.jsp">UPDATE</a>
+	<form method="get" name="employeepage" action="reviewUpdateAction.jsp">
+		<h1>UPDATE REVIEW DETAILS</h1>
+		<table>
 
-				</div>
-			</div>
-			<div class="dropdown">
-				<button class="dropbtn">
-					<strong>INTEREST</strong> <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<a href="interestView.jsp">VIEW</a> <a href="interest.jsp">UPDATE</a>
-
-				</div>
-			</div>
-			<div class="dropdown">
-				<button class="dropbtn">
-					<strong>LOAN RATE</strong> <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<a href="loanRateView.jsp">VIEW</a> <a href="loanRate.jsp">UPDATE</a>
-				</div>
-			</div>
-
-			<div class="dropdown">
-				<button class="dropbtn">
-					<strong>EMPLOYEE</strong> <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<a href="employeeAdd.jsp">ADD EMPLOYEE</a> <a
-						href="employeeView.jsp">VIEW/UPDATE/DELETE</a>
-
-				</div>
-			</div>
-		</strong>
-	</div>
-
-	<div class="back">
-		<div class="employee">
-			<%
-				Integer eno = Integer.parseInt(request.getParameter("eno"));
-				String reviewed = request.getParameter("reviewed");
-				String reviewing = request.getParameter("reviewing");
-				String review = request.getParameter("review");
-			%>
-			<form method="get" name="employeepage" action="reviewUpdateAction.jsp">
-				<h1>UPDATE REVIEW DETAILS</h1>
-				<table>
-
-					<tr>
-						<td>Review Number:</td>
-						<td><input type="text" name="eno" required="" value=<%=eno%>></td>
-					</tr>
-					<tr>
-						<td>Reviewed Person name</td>
-						<td><input type="text" name="reviewed" required=""
-							value=<%=reviewed%>></td>
-					</tr>
-					<tr>
-						<td>Reviewing Person name</td>
-						<td><input type="text" name="reviewing" required=""
-							value=<%=reviewing%>></td>
-					</tr>
-					<tr>
-						<td>Review</td>
-						<td><input type="password" name="review" required=""
-							value=<%=review%>></td>
+			<tr>
+				<td>Review Number:</td>
+				<td><input type="text" name="eno" required="" value=<%=eno%>></td>
+			</tr>
+			<tr>
+				<td>Reviewed Person name</td>
+				<td><input type="text" name="reviewed" required=""
+					value=<%=reviewed%>></td>
+			</tr>
+			<tr>
+				<td>Reviewing Person name</td>
+				<td><input type="text" name="reviewing" required=""
+					value=<%=reviewing%>></td>
+			</tr>
+			<tr>
+				<td>Review</td>
+				<td><input type="password" name="review" required=""
+					value=<%=review%>></td>
 					</tr>
 					<tr>
 						<td></td>

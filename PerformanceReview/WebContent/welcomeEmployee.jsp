@@ -88,31 +88,31 @@ body {
 </head>
 <body>
 	<%
-		session = request.getSession(false);
-		response.setHeader("Cache-Control", "no-cache");
-		response.setHeader("Cache-Control", "no-store");
-		response.setDateHeader("Expires", 0);
-		response.setHeader("Pragma", "no-cache");
-		String userName = (String) session.getAttribute("user");
-		if (userName == null || userName == "") {
-			response.sendRedirect("login.jsp?val=You are successfully logged out");
-		}
-	%>
-	<div class="navbar">
-		<img src="logo.png" width="200px" height="100px"> <strong>
-			<div class="dropdown">
-				<button class="dropbtn">
-					<strong><a class="active" href="logout.jsp">LOGOUT</a>  <a href="employeeReviewView.jsp">PERFORMANCE REVIEW</a></strong> <i class="fa fa-caret-down"></i>
-				</button>
-			</div>
+	session = request.getSession(false);
+	response.setHeader("Cache-Control", "no-cache");
+	response.setHeader("Cache-Control", "no-store");
+	response.setDateHeader("Expires", 0);
+	response.setHeader("Pragma", "no-cache");
+	String userName = (String) session.getAttribute("user");
+	if (userName == null || userName == "") {
+		response.sendRedirect("login.jsp?val=You are successfully logged out");
+	}
+%>
+<div class="navbar">
+	<img src="logo.png" width="200px" height="100px"> <strong>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<strong><a class="active" href="logout.jsp">LOGOUT</a>  <a href="employeeReviewView.jsp">PERFORMANCE REVIEW</a></strong> <i class="fa fa-caret-down"></i>
+			</button>
+		</div>
 
-		</strong>
-	</div>
+	</strong>
+</div>
 
-	<div class="back">
-		<h1 style="padding-top: 150px; padding-left: 600px;">
-			Welcome
-			<%=userName%></h1>
+<div class="back">
+	<h1 style="padding-top: 150px; padding-left: 600px;">
+		Welcome
+		<%=userName%></h1>
 	</div>
 
 </body>

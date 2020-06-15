@@ -10,23 +10,23 @@
 <%@page import="com.java.dao.LoginDAO"%>
 
 <%
-	String username = request.getParameter("username");
-	String password = request.getParameter("password");
+String username = request.getParameter("username");
+String password = request.getParameter("password");
 
-	LoginBean loginBean = new LoginBean();
-	loginBean.setUsername(username);
-	loginBean.setPassword(password);
-	int a = LoginDAO.check(loginBean);
+LoginBean loginBean = new LoginBean();
+loginBean.setUsername(username);
+loginBean.setPassword(password);
+int a = LoginDAO.check(loginBean);
 
-	if (a == 1) {
+if (a == 1) {
 
-		session.setAttribute("user", username);
-		response.sendRedirect("welcomeAdmin.jsp");
-	} else if (a == 2) {
+	session.setAttribute("user", username);
+	response.sendRedirect("welcomeAdmin.jsp");
+} else if (a == 2) {
 
-		session.setAttribute("user", username);
-		response.sendRedirect("welcomeEmployee.jsp");
-	} else {
-		response.sendRedirect("login.jsp?val=invalid user");
-	}
+	session.setAttribute("user", username);
+	response.sendRedirect("welcomeEmployee.jsp");
+} else {
+	response.sendRedirect("login.jsp?val=invalid user");
+}
 %>

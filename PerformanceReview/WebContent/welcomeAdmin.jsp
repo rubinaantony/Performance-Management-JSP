@@ -89,46 +89,46 @@ body {
 <body>
 	<body>
 	<%
-		session = request.getSession(false);
-		response.setHeader("Cache-Control", "no-cache");
-		response.setHeader("Cache-Control", "no-store");
-		response.setDateHeader("Expires", 0);
-		response.setHeader("Pragma", "no-cache");
-		String userName = (String) session.getAttribute("user");
-		if (userName == null || userName == "") {
-			response.sendRedirect("login.jsp?val=You are successfully logged out");
-		}
-	%>
-	<div class="navbar">
-		<img src="logo.png" width="200px" height="100px"> <strong>
-			<a class="active" href="logout.jsp">LOGOUT</a> 
-			<div class="dropdown">
-				<button class="dropbtn">
-					<strong>PERFORMANCE REVIEW</strong> <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<a href="assignPerformanceReview.jsp">ADD</a>
-					<a href="viewReviewEmp.jsp">VIEW/UPDATE</a>
-				</div>
+	session = request.getSession(false);
+	response.setHeader("Cache-Control", "no-cache");
+	response.setHeader("Cache-Control", "no-store");
+	response.setDateHeader("Expires", 0);
+	response.setHeader("Pragma", "no-cache");
+	String userName = (String) session.getAttribute("user");
+	if (userName == null || userName == "") {
+		response.sendRedirect("login.jsp?val=You are successfully logged out");
+	}
+%>
+<div class="navbar">
+	<img src="logo.png" width="200px" height="100px"> <strong>
+		<a class="active" href="logout.jsp">LOGOUT</a> 
+		<div class="dropdown">
+			<button class="dropbtn">
+				<strong>PERFORMANCE REVIEW</strong> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="assignPerformanceReview.jsp">ADD</a>
+				<a href="viewReviewEmp.jsp">VIEW/UPDATE</a>
 			</div>
+		</div>
 
-			<div class="dropdown">
-				<button class="dropbtn">
-					<strong>EMPLOYEE</strong> <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<a href="employeeAdd.jsp">ADD EMPLOYEE</a> <a
-						href="employeeView.jsp">VIEW/UPDATE/DELETE</a>
+		<div class="dropdown">
+			<button class="dropbtn">
+				<strong>EMPLOYEE</strong> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="employeeAdd.jsp">ADD EMPLOYEE</a> <a
+					href="employeeView.jsp">VIEW/UPDATE/DELETE</a>
 
-				</div>
 			</div>
-		</strong>
-	</div>
+		</div>
+	</strong>
+</div>
 
-	<div class="back">
-		<h1 style="padding-top: 150px; padding-left: 600px;">
-			Welcome
-			<%=userName%></h1>
+<div class="back">
+	<h1 style="padding-top: 150px; padding-left: 600px;">
+		Welcome
+		<%=userName%></h1>
 	</div>
 
 </body>

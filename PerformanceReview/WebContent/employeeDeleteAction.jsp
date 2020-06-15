@@ -8,17 +8,17 @@
 <%@page import="com.java.dao.EmployeeDAO"%>
 
 <%
-	Integer eno = Integer.parseInt(request.getParameter("eno"));
-	
-	EmployeeBean employeeBean = new EmployeeBean();
-	employeeBean.setEno(eno);
+Integer eno = Integer.parseInt(request.getParameter("eno"));
 
-	boolean flag = EmployeeDAO.deleteEmployee(employeeBean);
-	if (flag == true) {
+EmployeeBean employeeBean = new EmployeeBean();
+employeeBean.setEno(eno);
 
-		response.sendRedirect("employeeView.jsp");
-	} else {
+boolean flag = EmployeeDAO.deleteEmployee(employeeBean);
+if (flag == true) {
 
-		response.sendRedirect("employeeView.jsp");
-	}
+	response.sendRedirect("employeeView.jsp");
+} else {
+
+	response.sendRedirect("employeeView.jsp");
+}
 %>

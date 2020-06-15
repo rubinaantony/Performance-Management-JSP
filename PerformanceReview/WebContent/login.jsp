@@ -243,21 +243,21 @@ body {
 		<div class="right">
 			<form action="validate.jsp">
 				<h1 style="color: #182d59">SIGN IN</h1>
-				<br> <input type="text" placeholder="Username" name="username">
-				<input type="password" placeholder="Password" name="password">
-				<input type="submit" value="LOG IN"><br>
-				<%
-					try {
-						String val = "";
-						val = request.getParameter("val");
-						if (val == null) {
+		<br> <input type="text" placeholder="Username" name="username">
+		<input type="password" placeholder="Password" name="password">
+		<input type="submit" value="LOG IN"><br>
+		<%
+			try {
+				String val = "";
+				val = request.getParameter("val");
+				if (val == null) {
 
-						} else {
-							out.print(val);
-						}
-					} catch (Exception e) {
-					}
-				%>
+				} else {
+					out.print(val);
+				}
+			} catch (Exception e) {
+			}
+		%>
 
 				<p class="forgot">
 					<a href="forgotPassword.jsp">Forgot password?</a>

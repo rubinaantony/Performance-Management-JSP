@@ -16,32 +16,32 @@
 
 
 	<%
-		Integer eno = Integer.parseInt(request.getParameter("num"));
-		String ename = request.getParameter("name");
-		String eusername = request.getParameter("username");
-		String epassword = request.getParameter("password");
-		String eaddress = request.getParameter("address");
-		String emobile = request.getParameter("mobile");
-		String eemail = request.getParameter("email");
-		String erole = request.getParameter("role");
+	Integer eno = Integer.parseInt(request.getParameter("num"));
+	String ename = request.getParameter("name");
+	String eusername = request.getParameter("username");
+	String epassword = request.getParameter("password");
+	String eaddress = request.getParameter("address");
+	String emobile = request.getParameter("mobile");
+	String eemail = request.getParameter("email");
+	String erole = request.getParameter("role");
 
-		EmployeeBean employeeBean = new EmployeeBean();
-		employeeBean.setEno(eno);
-		employeeBean.setEname(ename);
-		employeeBean.setEusername(eusername);
-		employeeBean.setEpassword(epassword);
-		employeeBean.setEaddress(eaddress);
-		employeeBean.setEmobile(emobile);
-		employeeBean.setEemail(eemail);
-		employeeBean.setErole(erole);
-		boolean flag = EmployeeDAO.insertEmployee(employeeBean);
-		if (flag == true) {
+	EmployeeBean employeeBean = new EmployeeBean();
+	employeeBean.setEno(eno);
+	employeeBean.setEname(ename);
+	employeeBean.setEusername(eusername);
+	employeeBean.setEpassword(epassword);
+	employeeBean.setEaddress(eaddress);
+	employeeBean.setEmobile(emobile);
+	employeeBean.setEemail(eemail);
+	employeeBean.setErole(erole);
+	boolean flag = EmployeeDAO.insertEmployee(employeeBean);
+	if (flag == true) {
 
-			response.sendRedirect("employeeView.jsp");
-		} else {
+		response.sendRedirect("employeeView.jsp");
+	} else {
 
-			response.sendRedirect("employeeView.jsp");
-		}
-	%>
+		response.sendRedirect("employeeView.jsp");
+	}
+%>
 </body>
 </html>

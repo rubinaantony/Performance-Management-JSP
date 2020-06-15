@@ -112,95 +112,95 @@ table {
 </head>
 <body>
 	<%
-		session = request.getSession(false);
-		response.setHeader("Cache-Control", "no-cache");
-		response.setHeader("Cache-Control", "no-store");
-		response.setDateHeader("Expires", 0);
-		response.setHeader("Pragma", "no-cache");
-		String userName = (String) session.getAttribute("user");
-		if (userName == null || userName == "") {
-			response.sendRedirect("login.jsp?val=You are successfully logged out");
-		}
-	%>
-	<div class="navbar">
-		<img src="logo.png" width="200px" height="100px"> <strong>
-			<a class="active" href="logout.jsp">LOGOUT</a> 
+session = request.getSession(false);
+response.setHeader("Cache-Control", "no-cache");
+response.setHeader("Cache-Control", "no-store");
+response.setDateHeader("Expires", 0);
+response.setHeader("Pragma", "no-cache");
+String userName = (String) session.getAttribute("user");
+if (userName == null || userName == "") {
+	response.sendRedirect("login.jsp?val=You are successfully logged out");
+}
+%>
+<div class="navbar">
+	<img src="logo.png" width="200px" height="100px"> <strong>
+		<a class="active" href="logout.jsp">LOGOUT</a> 
+		<button class="dropbtn">
+				<strong>PERFORMANCE REVIEW</strong> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="assignPerformanceReview.jsp">ADD</a>
+				<a href="viewReviewEmp.jsp">VIEW</a> <a href="loanRate.jsp">UPDATE</a>
+			</div>
+		</div>
+
+		<div class="dropdown">
 			<button class="dropbtn">
-					<strong>PERFORMANCE REVIEW</strong> <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<a href="assignPerformanceReview.jsp">ADD</a>
-					<a href="viewReviewEmp.jsp">VIEW</a> <a href="loanRate.jsp">UPDATE</a>
-				</div>
+				<strong>EMPLOYEE</strong> <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="employeeAdd.jsp">ADD EMPLOYEE</a> <a
+					href="employeeView.jsp">VIEW/UPDATE/DELETE</a>
+
 			</div>
+		</div>
+	</strong>
+</div>
+<div class="back">
+	<div class="employee">
+		<%
+		Integer eno = Integer.parseInt(request.getParameter("eno"));
+		String ename = request.getParameter("ename");
+		String eusername = request.getParameter("eusername");
+		String epassword = request.getParameter("epassword");
+		String eaddress = request.getParameter("eaddress");
+		String emobile = request.getParameter("emobile");
+		String eemail = request.getParameter("eemail");
+		String erole = request.getParameter("erole");
+	%>
+	<form method="get" name="employeepage"
+		action="employeeUpdateAction.jsp">
+		<h1>UPDATE EMPLOYEE DETAILS</h1>
+		<table>
 
-			<div class="dropdown">
-				<button class="dropbtn">
-					<strong>EMPLOYEE</strong> <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-					<a href="employeeAdd.jsp">ADD EMPLOYEE</a> <a
-						href="employeeView.jsp">VIEW/UPDATE/DELETE</a>
-
-				</div>
-			</div>
-		</strong>
-	</div>
-	<div class="back">
-		<div class="employee">
-			<%
-				Integer eno = Integer.parseInt(request.getParameter("eno"));
-				String ename = request.getParameter("ename");
-				String eusername = request.getParameter("eusername");
-				String epassword = request.getParameter("epassword");
-				String eaddress = request.getParameter("eaddress");
-				String emobile = request.getParameter("emobile");
-				String eemail = request.getParameter("eemail");
-				String erole = request.getParameter("erole");
-			%>
-			<form method="get" name="employeepage"
-				action="employeeUpdateAction.jsp">
-				<h1>UPDATE EMPLOYEE DETAILS</h1>
-				<table>
-
-					<tr>
-						<td>Employee Number:</td>
-						<td><input type="text" name="num" required="" value=<%=eno%>></td>
-					</tr>
-					<tr>
-						<td>Employee name</td>
-						<td><input type="text" name="name" required=""
-							value=<%=ename%>></td>
-					</tr>
-					<tr>
-						<td>User name</td>
-						<td><input type="text" name="username" required=""
-							value=<%=eusername%>></td>
-					</tr>
-					<tr>
-						<td>Password</td>
-						<td><input type="password" name="password" required=""
-							value=<%=epassword%>></td>
-					</tr>
-					<tr>
-						<td>Address</td>
-						<td><input type="textarea" name="address" required=""
-							value=<%=eaddress%>></td>
-					</tr>
-					<tr>
-						<td>Mobile</td>
-						<td><input type="number" name="mobile" required=""
-							pattern="0-9{10}" value=<%=emobile%>></td>
-					</tr>
-					<tr>
-						<td>Email</td>
-						<td><input type="email" name="email" required=""
-							value=<%=eemail%>></td>
-					</tr>
-					<tr>
-						<td>Role</td>
-						<td><input type="text" name="role" required=""
-							value=<%=erole%>></td>
+			<tr>
+				<td>Employee Number:</td>
+				<td><input type="text" name="num" required="" value=<%=eno%>></td>
+			</tr>
+			<tr>
+				<td>Employee name</td>
+				<td><input type="text" name="name" required=""
+					value=<%=ename%>></td>
+			</tr>
+			<tr>
+				<td>User name</td>
+				<td><input type="text" name="username" required=""
+					value=<%=eusername%>></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="password" name="password" required=""
+					value=<%=epassword%>></td>
+			</tr>
+			<tr>
+				<td>Address</td>
+				<td><input type="textarea" name="address" required=""
+					value=<%=eaddress%>></td>
+			</tr>
+			<tr>
+				<td>Mobile</td>
+				<td><input type="number" name="mobile" required=""
+					pattern="0-9{10}" value=<%=emobile%>></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><input type="email" name="email" required=""
+					value=<%=eemail%>></td>
+			</tr>
+			<tr>
+				<td>Role</td>
+				<td><input type="text" name="role" required=""
+					value=<%=erole%>></td>
 					</tr>
 					<tr>
 						<td></td>

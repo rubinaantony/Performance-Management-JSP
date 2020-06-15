@@ -107,83 +107,83 @@ body {
 </head>
 <body>
 	<%
-		session = request.getSession(false);
-		response.setHeader("Cache-Control", "no-cache");
-		response.setHeader("Cache-Control", "no-store");
-		response.setDateHeader("Expires", 0);
-		response.setHeader("Pragma", "no-cache");
-		String userName = (String) session.getAttribute("user");
-		if (userName == null || userName == "") {
-			response.sendRedirect("login.jsp?val=You are successfully logged out");
-		}
+session = request.getSession(false);
+response.setHeader("Cache-Control", "no-cache");
+response.setHeader("Cache-Control", "no-store");
+response.setDateHeader("Expires", 0);
+response.setHeader("Pragma", "no-cache");
+String userName = (String) session.getAttribute("user");
+if (userName == null || userName == "") {
+	response.sendRedirect("login.jsp?val=You are successfully logged out");
+}
+%>
+<div class="navbar">
+	<img src="logo.png" width="200px" height="100px"> <strong>
+		<a class="active" href="logout.jsp">LOGOUT</a> 
+		<a class="active" href="employeeReviewView.jsp">PERFORMANCE REVIEW</a> 
+
+		
+</div>
+
+<div class="back">
+	<div class="employee">
+		<%@ page import="com.java.dao.AdminDao"%>
+	<%@ page import="com.java.beans.AdminBean"%>
+	<%@ page import="java.util.ArrayList"%>
+	<%
+	ArrayList<AdminBean> eb = AdminDao.viewReview();
+
+		AdminBean adminBean = new AdminBean();
+		int size = 0;
+		size = eb.size();
+		if (size == 0) {
 	%>
-	<div class="navbar">
-		<img src="logo.png" width="200px" height="100px"> <strong>
-			<a class="active" href="logout.jsp">LOGOUT</a> 
-			<a class="active" href="employeeReviewView.jsp">PERFORMANCE REVIEW</a> 
+	<h3 align="center">NO DATA TO SHOWN</h3>
+	<%
+		} else {
+	%>
+	<h1 align="center">REVIEW DETAILS</h1>
+	<table width="500" border="1" align="center">
 
-			
-	</div>
+		<tr>
+			<td align="center">Sl.No</td>
+			<td align="center">Review Id</td>
+			<td align="center">Reviewed Employee</td>
+			<td align="center">Reviewing Employee</td>
+			<td align="center">Review</td>
+		</tr>
+		<%
+			int i = 0;
+				for (AdminBean it : eb) {
+					i = i + 1;
+		%>
 
-	<div class="back">
-		<div class="employee">
-			<%@ page import="com.java.dao.AdminDao"%>
-			<%@ page import="com.java.beans.AdminBean"%>
-			<%@ page import="java.util.ArrayList"%>
-			<%
-			ArrayList<AdminBean> eb = AdminDao.viewReview();
+		<tr>
+			<td width="12" height="20" align="center"><span
+				style="font-size: 14"><%=i%></span></td>
+			<td width="43" align="center"><div align="center">
+					<span style="font-size: 14"><%=it.getId()%> </span>
+				</div></td>
+			<td width="43" align="center"><div align="center">
+					<span style="font-size: 14"><%=it.getReviewedPerson()%> </span>
+				</div></td>
+			<td width="43" align="center"><div align="center">
+					<span style="font-size: 14"><%=it.getReviewingPerson()%> </span>
+				</div></td>
+			<td width="43" align="center"><div align="center">
+					<span style="font-size: 14"><%=it.getReview()%></span>
+				</div></td>
+			<td width="43" align="center"><div align="center">
+					<span style="font-size: 14"><a
+						href="addFeedback.jsp?eno=<%=it.getId()%>">ADD FEEDBACK</a></span>
+				</div></td>
+		
+		</tr>
 
-				AdminBean adminBean = new AdminBean();
-				int size = 0;
-				size = eb.size();
-				if (size == 0) {
-			%>
-			<h3 align="center">NO DATA TO SHOWN</h3>
-			<%
-				} else {
-			%>
-			<h1 align="center">REVIEW DETAILS</h1>
-			<table width="500" border="1" align="center">
-
-				<tr>
-					<td align="center">Sl.No</td>
-					<td align="center">Review Id</td>
-					<td align="center">Reviewed Employee</td>
-					<td align="center">Reviewing Employee</td>
-					<td align="center">Review</td>
-				</tr>
-				<%
-					int i = 0;
-						for (AdminBean it : eb) {
-							i = i + 1;
-				%>
-
-				<tr>
-					<td width="12" height="20" align="center"><span
-						style="font-size: 14"><%=i%></span></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><%=it.getId()%> </span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><%=it.getReviewedPerson()%> </span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><%=it.getReviewingPerson()%> </span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><%=it.getReview()%></span>
-						</div></td>
-					<td width="43" align="center"><div align="center">
-							<span style="font-size: 14"><a
-								href="addFeedback.jsp?eno=<%=it.getId()%>">ADD FEEDBACK</a></span>
-						</div></td>
-				
-				</tr>
-
-				<%
-					}
-					}
-				%>
+		<%
+			}
+			}
+		%>
 
 			</table>
 		</div>

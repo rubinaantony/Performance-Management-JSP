@@ -112,36 +112,36 @@ table {
 </head>
 <body>
 	<%
-		session = request.getSession(false);
-		response.setHeader("Cache-Control", "no-cache");
-		response.setHeader("Cache-Control", "no-store");
-		response.setDateHeader("Expires", 0);
-		response.setHeader("Pragma", "no-cache");
-		String userName = (String) session.getAttribute("user");
-		if (userName == null || userName == "") {
-			response.sendRedirect("login.jsp?val=You are successfully logged out");
-		}
-	%>
-	<div class="navbar">
-		<img src="logo.png" width="200px" height="100px"> <strong>
-			<a class="active" href="logout.jsp">LOGOUT</a> 
-			<a class="active" href="employeeReviewView.jsp">PERFORMANCE REVIEW</a> 
+	session = request.getSession(false);
+	response.setHeader("Cache-Control", "no-cache");
+	response.setHeader("Cache-Control", "no-store");
+	response.setDateHeader("Expires", 0);
+	response.setHeader("Pragma", "no-cache");
+	String userName = (String) session.getAttribute("user");
+	if (userName == null || userName == "") {
+		response.sendRedirect("login.jsp?val=You are successfully logged out");
+	}
+%>
+<div class="navbar">
+	<img src="logo.png" width="200px" height="100px"> <strong>
+		<a class="active" href="logout.jsp">LOGOUT</a> 
+		<a class="active" href="employeeReviewView.jsp">PERFORMANCE REVIEW</a> 
 
-			
-	</div>
+		
+</div>
 
-	<div class="back">
-		<div class="employee">
-			<%
-				Integer eno = Integer.parseInt(request.getParameter("eno"));
-			%>
-			<form method="get" name="employeepage"
-				action="feedbackAddAction.jsp">
-				<h1>ADD FEEDBACK</h1>
-				<table>
-					<tr>
-						<td><input type="hidden" name="eno" required=""
-							value=<%=eno%>></td>
+<div class="back">
+	<div class="employee">
+		<%
+			Integer eno = Integer.parseInt(request.getParameter("eno"));
+		%>
+		<form method="get" name="employeepage"
+			action="feedbackAddAction.jsp">
+			<h1>ADD FEEDBACK</h1>
+			<table>
+				<tr>
+					<td><input type="hidden" name="eno" required=""
+						value=<%=eno%>></td>
 						<td>Feedback </td>
 						<td><input type="textarea" name="feedback" required=""
 							value=""></td>
