@@ -194,5 +194,37 @@ public class EmployeeDAO {
 	}
 
 	// ----------------------------END------------------
+	
+	
+	// -------------------------Update Password(Forgot Password)---------------------
+	/**
+	 * @author : Rubina Brijith Antony
+	 * @purpose: update Employee password
+	 * @date:16-06-2020
+	 * @see: nothing
+	 * @version:1.0
+	 * @param:EmployeeBean
+	 * @throws:SQLException
+	 * @return:boolean
+	 */
+
+	public static boolean updatePassword(EmployeeBean employeeBean) throws SQLException {
+
+		try {
+
+			con = getDbConnection();
+			pst = con.prepareStatement("update TBL_EMPLOYEEREVIEW set e_password=? where e_username=?");
+
+			pst.setString(1, employeeBean.getEpassword());
+			pst.setString(2, employeeBean.getEusername());
+
+			pst.executeUpdate();
+			flag = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return flag;
+
+	}
 
 }
