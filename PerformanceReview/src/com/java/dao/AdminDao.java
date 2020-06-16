@@ -225,7 +225,7 @@ public static ArrayList<AdminBean> viewReview() throws SQLException {
 	try {
 
 		con = getDbConnection();
-		pst = con.prepareStatement("select * from review_emp");
+		pst = con.prepareStatement("select * from review_emp where feedback IS NULL");
 		rs = pst.executeQuery();
 		while (rs.next()) {
 			AdminBean adminBean = new AdminBean();
@@ -277,5 +277,43 @@ public static boolean updatefeedback(AdminBean adminBean) throws SQLException {
 
 }
 // ---------------------------------END-------------------------
+
+//------------------------------View Reviews for Admin ----------------------------
+
+/**
+* @author : Rubina Brijith Antony
+* @purpose: view Review Details
+* @date: 15-06-2020
+* @param: AdminBean
+* @throws:SQLException
+* @return:Arraylist
+*/
+
+public static ArrayList<AdminBean> viewReviewAdmin() throws SQLException {
+
+	ArrayList<AdminBean> eb = new ArrayList<AdminBean>();
+	try {
+
+		con = getDbConnection();
+		pst = con.prepareStatement("select * from review_emp");
+		rs = pst.executeQuery();
+		while (rs.next()) {
+			AdminBean adminBean = new AdminBean();
+			adminBean.setId(rs.getInt(1));
+			adminBean.setReviewedPerson(rs.getString(2));
+			adminBean.setReviewingPerson(rs.getString(3));
+			adminBean.setReview(rs.getString(5));
+		
+
+			eb.add(adminBean);
+		}
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return eb;
+
+}
+
 	
 }

@@ -121,14 +121,14 @@ body {
 	<img src="logo.png" width="200px" height="100px"> <strong>
 		<a class="active" href="logout.jsp">LOGOUT</a> 
 		<div class="dropdown">
-			<button class="dropbtn">
-				<strong>PERFORMANCE REVIEW</strong> <i class="fa fa-caret-down"></i>
-			</button>
-			<div class="dropdown-content">
-				<a href="loanRateView.jsp">ADD</a>
-				<a href="loanRateView.jsp">VIEW</a> <a href="loanRate.jsp">UPDATE</a>
+				<button class="dropbtn">
+					<strong>PERFORMANCE REVIEW</strong> <i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<a href="assignPerformanceReview.jsp">ADD</a>
+					<a href="viewReviewEmp.jsp">VIEW/UPDATE</a>
+				</div>
 			</div>
-		</div>
 
 		<div class="dropdown">
 			<button class="dropbtn">
@@ -149,7 +149,7 @@ body {
 		<%@ page import="com.java.beans.AdminBean"%>
 		<%@ page import="java.util.ArrayList"%>
 		<%
-		ArrayList<AdminBean> eb = AdminDao.viewReview();
+		ArrayList<AdminBean> eb = AdminDao.viewReviewAdmin();
 
 			AdminBean adminBean = new AdminBean();
 			int size = 0;

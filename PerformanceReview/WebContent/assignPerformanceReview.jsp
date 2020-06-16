@@ -150,15 +150,13 @@ table {
  <%
 ResultSet rs=AdminDao.getUname();
 %>
-</td><td><select name="reviewedPerson" id="reviewedPerson">
-<option value="0">Select</option>
+</td><td><select name="reviewedPerson" id="reviewedPerson"><option value="0">Select</option>
 <% while(rs.next()){%>
 <option><%=rs.getString(1)%></option>
 <% }%></select></td></tr>
                     
   <tr>
-  <td>Feedback By:</td>
-  <td><input type="text" name="review" required=""></td>
+  <td>Review</td><td><input type="text" name="review" required=""></td>
   </tr>                  
 <tr><td><label> Reviewing Person  </label>
 <%

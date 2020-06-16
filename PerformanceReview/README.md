@@ -11,7 +11,7 @@ This section describes the different kind of operations that can be performed by
 The following are the capabilities for the Admin user
 ```
 * Add/Update/Delete/View Employee details
-* Add/update/view performance reviews
+* Add/Update/View performance reviews
 * Assign employees to participate in another employees performance review
 ```
 
@@ -21,27 +21,28 @@ The following are the capabilities for the Admin user
 The following are the capabilities for the Employee user
 ```
 * List of performance reviews requiring feedback
-* Add  Feedback
+* Add Feedback
 ```
 
 # Design Description
 
-Here the user have the provision to login to the application using their username and password, based on their role the are redirect to the admin and employee page respectively.
-Admin has the provision to add, update, delete and view employees. They also have the provision to add, update and  view performance review, and they can assign employees to 
-participate in another employees performance review.
-Employees can view the performance review assigned to them for reviewing. They also have the provision to add feedbacks. 
+Here the user have the provision to login to the application using their username and password, based on their role they are redirected to admin's and employees page respectively. Admin has the provision to add, update, delete and view employees. They also have the provision to add, update and  view performance review, and they can assign employees to participate in another employees performance review.
+Employees can view the performance review assigned to them for reviewing. They also have the provision to add feedbacks.
 
 
 ## Technologies used
 
 * Java
 * Oracle
+* JSP
+* HTML5
+* CSS
+* Apache Tomcat v8.0 Server
+
 
 ## Assumptions made
-Admin has the provision to manage employees and create  performance review and assign it to other employees for reviewing. 
+Admin has the provision to manage employees and create  performance review and assign it to other employees for reviewing.
 
 ## Authors
 
 **Rubina Brijith Antony**
-
-
