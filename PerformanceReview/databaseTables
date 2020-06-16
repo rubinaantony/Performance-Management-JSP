@@ -1,0 +1,80 @@
+//----------------Login Table------------------
+CREATE TABLE  "TBL_FEEDBACKLOGIN" 
+   (	"L_ID" NUMBER NOT NULL ENABLE, 
+	"L_USERNAME" VARCHAR2(20) NOT NULL ENABLE, 
+	"L_PASSWORD" VARCHAR2(20) NOT NULL ENABLE, 
+	"L_ROLE" VARCHAR2(15) NOT NULL ENABLE, 
+	 CONSTRAINT "TBL_FEEDBACKLOGIN_PK" PRIMARY KEY ("L_ID") ENABLE
+   ) ;
+
+CREATE OR REPLACE TRIGGER  "BI_TBL_FEEDBACKLOGIN" 
+  before insert on "TBL_FEEDBACKLOGIN"               
+  for each row  
+begin   
+  if :NEW."L_ID" is null then 
+    select "TBL_FEEDBACKLOGIN_SEQ".nextval into :NEW."L_ID" from dual; 
+  end if; 
+end; 
+
+/
+ALTER TRIGGER  "BI_TBL_FEEDBACKLOGIN" ENABLE;
+
+//----------------------END-----------------------
+
+//---------------------------Employee Table------------------------
+
+CREATE TABLE  "TBL_EMPLOYEEREVIEW" 
+   (	"E_ID" NUMBER NOT NULL ENABLE, 
+	"E_NUMBER" VARCHAR2(20) NOT NULL ENABLE, 
+	"E_NAME" VARCHAR2(20) NOT NULL ENABLE, 
+	"E_USERNAME" VARCHAR2(20) NOT NULL ENABLE, 
+	"E_PASSWORD" VARCHAR2(20) NOT NULL ENABLE, 
+	"E_ADDRESS" VARCHAR2(40) NOT NULL ENABLE, 
+	"E_MOBILE" VARCHAR2(20) NOT NULL ENABLE, 
+	"E_EMAIL" VARCHAR2(20) NOT NULL ENABLE, 
+	"E_ROLE" VARCHAR2(20) NOT NULL ENABLE, 
+	 CONSTRAINT "TBL_EMPLOYEEREVIEW_PK" PRIMARY KEY ("E_ID") ENABLE
+   ) ;
+
+CREATE OR REPLACE TRIGGER  "BI_TBL_EMPLOYEEREVIEW" 
+  before insert on "TBL_EMPLOYEEREVIEW"               
+  for each row  
+begin   
+  if :NEW."E_ID" is null then 
+    select "TBL_EMPLOYEEREVIEW_SEQ".nextval into :NEW."E_ID" from dual; 
+  end if; 
+end; 
+
+/
+ALTER TRIGGER  "BI_TBL_EMPLOYEEREVIEW" ENABLE;
+
+-------------------------------END---------------------------------------------
+
+
+------------------------------Review Table------------------------------------
+
+CREATE TABLE  "REVIEW_EMP" 
+   (	"R_ID" NUMBER NOT NULL ENABLE, 
+	"REVIEWEDPERSON" VARCHAR2(20), 
+	"REVIEWINGPERSON" VARCHAR2(20), 
+	"FEEDBACK" VARCHAR2(200), 
+	"REVIEW" VARCHAR2(200) NOT NULL ENABLE, 
+	 CONSTRAINT "REVIEW_EMP_PK" PRIMARY KEY ("R_ID") ENABLE
+   ) ;
+
+CREATE OR REPLACE TRIGGER  "BI_REVIEW_EMP" 
+  before insert on "REVIEW_EMP"               
+  for each row  
+begin   
+  if :NEW."R_ID" is null then 
+    select "REVIEW_EMP_SEQ".nextval into :NEW."R_ID" from dual; 
+  end if; 
+end; 
+
+/
+ALTER TRIGGER  "BI_REVIEW_EMP" ENABLE;
+
+//--------------------------------END---------------------------
+
+
+
