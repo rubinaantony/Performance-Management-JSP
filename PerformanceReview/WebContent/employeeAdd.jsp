@@ -133,7 +133,7 @@ body {
 			</button>
 			<div class="dropdown-content">
 				<a href="assignPerformanceReview.jsp">ADD</a>
-				<a href="viewReviewEmp.jsp">VIEW</a> <a href="loanRate.jsp">UPDATE</a>
+				<a href="viewReviewEmp.jsp">VIEW/UPDATE</a>
 			</div>
 		</div>
 
@@ -151,7 +151,7 @@ body {
 </div>
 <div class="back">
 	<div class="employee">
-		<form name="employee" method="post" action="employeeAddAction.jsp">
+		<form name="employee" method="put" action="employeeAddAction.jsp">
 			<table cellpadding="10">
 				<tr>
 					<td colspan="2"><h1>Employee Details</h1></td>

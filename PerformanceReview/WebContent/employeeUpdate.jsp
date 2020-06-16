@@ -130,7 +130,7 @@ if (userName == null || userName == "") {
 			</button>
 			<div class="dropdown-content">
 				<a href="assignPerformanceReview.jsp">ADD</a>
-				<a href="viewReviewEmp.jsp">VIEW</a> <a href="loanRate.jsp">UPDATE</a>
+				<a href="viewReviewEmp.jsp">VIEW/UPDATE</a>
 			</div>
 		</div>
 

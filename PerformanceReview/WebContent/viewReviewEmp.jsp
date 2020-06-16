@@ -160,6 +160,7 @@ body {
 		<%
 			} else {
 		%>
+		<form method="get" >
 		<h1 align="center">REVIEW DETAILS</h1>
 		<table width="500" border="1" align="center">
 
@@ -204,6 +205,7 @@ body {
 			%>
 
 			</table>
+			</form>
 		</div>
 	</div>
 </body>
