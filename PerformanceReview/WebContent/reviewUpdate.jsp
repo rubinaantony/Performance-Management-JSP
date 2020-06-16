@@ -175,7 +175,7 @@ if (userName == null || userName == "") {
 			</tr>
 			<tr>
 				<td>Review</td>
-				<td><input type="password" name="review" required=""
+				<td><input type="text" name="review" required=""
 					value=<%=review%>></td>
 					</tr>
 					<tr>
@@ -188,3 +188,11 @@ if (userName == null || userName == "") {
 	</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
