@@ -26,22 +26,28 @@ The following are the capabilities for the Employee user
 
 # Design Description
 
-Here the user have the provision to login to the application using their username and password, based on their role they are redirected to admin's and employees page respectively. Admin has the provision to add, update, delete and view employees. They also have the provision to add, update and  view performance review, and they can assign employees to participate in another employees performance review.
+Here the user have the provision to login to the application using their username and password, based on their role they are redirected to admin's and employees page respectively they have an option of forgot password for resetting their password. Admin has the provision to add, update, delete and view employees. They also have the provision to add, update and  view performance review, and they can assign employees to participate in another employees performance review.
 Employees can view the performance review assigned to them for reviewing. They also have the provision to add feedbacks.
 
 
 ## Technologies used
-
+```
 * Java
 * Oracle
 * JSP
 * HTML5
 * CSS
 * Apache Tomcat v8.0 Server
-
+```
+## API calls used
+```
+* POST
+* GET
+* PUT 
+```
 
 ## Assumptions made
-Admin has the provision to manage employees and create  performance review and assign it to other employees for reviewing.
+The user have oracle database and ojdbc library. The user has to create the tables as mentioned in the file datbaseTables. 
 
 ## Authors
 
